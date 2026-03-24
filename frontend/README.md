@@ -1,16 +1,131 @@
-# React + Vite
+#  Food Delivery Frontend (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+This is the frontend of the **Food Delivery Application**, built using **React (Vite)**.
+It provides a responsive UI for browsing restaurants, viewing menus, and interacting with the cart system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React.js
+* Vite
+* JavaScript (ES6+)
+* Tailwind CSS
+* Material UI (Icons & Components)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Features
+
+* 🏠 Home Page with food categories & carousel
+* 🍽️ Restaurant Listing Page
+* 📄 Restaurant Details Page
+* 📋 Menu Display (MenuCard component)
+* 🛒 Cart Icon & UI (Navbar)
+* 🔍 Search Functionality (UI level)
+* 🎯 Responsive Design
+
+---
+
+## 📂 Project Structure
+
+frontend/
+│── src/
+│   ├── component/
+│   │   ├── Home/
+│   │   │   ├── Home.jsx
+│   │   │   ├── CarouselItem.jsx
+│   │   │   ├── MultiItemCarousel.jsx
+│   │   │   └── topMeal.js
+│   │   │
+│   │   ├── Navbar/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Navbar.css
+│   │   │
+│   │   ├── Restaurant/
+│   │   │   ├── RestaurantCard.jsx
+│   │   │   ├── RestaurantDetails.jsx
+│   │   │   └── MenuCard.jsx
+│   │   │
+│   │   └── Theme/
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+│── public/
+│── package.json
+│── vite.config.js
+
+---
+
+## 🍽️ Restaurant Module (Added)
+
+### 🔹 Restaurant Page
+
+* Displays list of restaurants
+* Uses `RestaurantCard.jsx` for UI
+* Shows image, name, rating, and basic info
+
+### 🔹 Restaurant Details Page
+
+* Displays full restaurant details
+* Shows menu items
+* Uses `MenuCard.jsx`
+
+### 🔹 MenuCard Component
+
+* Displays food item with:
+
+  * Image
+  * Name
+  * Price
+  * Description
+* Supports dynamic rendering using `.map()`
+
+---
+
+## ▶️ Run Locally
+
+### 1️⃣ Navigate to frontend
+
+cd Tomato/frontend
+
+### 2️⃣ Install dependencies
+
+npm install
+
+### 3️⃣ Start development server
+
+npm run dev
+
+---
+
+## 🌐 Local URL
+
+http://localhost:5173
+
+---
+
+## 📸 UI Highlights
+
+* Clean and modern UI using Tailwind
+* Carousel for food items
+* Responsive layout for mobile and desktop
+* Component-based architecture
+
+---
+
+## 🔧 Future Improvements
+
+* API integration with backend
+* Add to cart functionality
+* Authentication (Login/Register UI)
+* Payment UI
+* Order history page
+
+---
+
+
