@@ -19,3 +19,4 @@ export const DarkTheme = createTheme({
     },
   },
 });
+export default DarkTheme

@@ -1,7 +1,7 @@
-import { Divider, Grid } from '@mui/material'
+import { Divider, Grid, Typography, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import React from 'react'
+import React from 'react';
 
 export const categories = [
   "pizza",
@@ -17,6 +17,9 @@ export const foodTypes = [
   { label: "Non-Vegetarian", value: "non_vegetarian" },
   { label: "Seasonal", value: "seasonal" }
 ];
+
+const menu = [1,1,1,1,1,1];
+
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = React.useState("all");
   const handleFilter = (e) => {
@@ -76,7 +79,7 @@ const RestaurantDetails = () => {
 
       <section className="pt-[2rem] lg:flex relative">
         <div className="space-y-10 lg:w-[20%] filter ">
-          <div className="box space-y-5 lg:sticky top-28 p-5 shadow-md">
+          <div className="box space-y-5 lg:sticky top-28 d">
             <div>
               <Typography variant="h5" sx={{ paddingBottom: "1rem" }}>
                 Food Type

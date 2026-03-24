@@ -9,7 +9,7 @@ const RestaurantCard = () => {
       <div className={`${true ? "cursor-pointer" : "cursor-not-allowed"} relative`}>
         <img
           className="w-full h-[10rem] rounded-t-md object-cover"
-          src="http://res.cloudinary.com/dcpesbd8q/image/upload/v1707802815/ux3x93xzfbgthudigv2.jpg"
+          src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
           alt=""
         />
         <Chip
