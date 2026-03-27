@@ -31,6 +31,9 @@ const CartItem = () => {
           <p>$12.99</p>
         </div>
       </div>
+      <div className='pt-3 space-x-2'>
+        {[1,1,1,1].map((item) =><Chip label={"bread"} />)}
+      </div>
     </div>
   )
 }

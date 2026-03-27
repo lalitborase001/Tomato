@@ -16,10 +16,25 @@ const Cart = () => {
               <p>Item Total</p>
               <p>$64.95</p>
             </div>
-
+            <div className='flex justify-between text-gray-400'>
+              <p>Deliver Fee</p>
+              <p>$5.00</p>
+            </div>
+            <div className='flex justify-between text-gray-400'>
+              <p>GST and Restaurant Charges</p>
+              <p>$8.12</p>
+            </div>
+            <Divider/>
+          </div>
+          <div>
+            <p>Total Pay</p>
+            <p>$78.07 </p>
           </div>
         </section> 
-        <Divider/>
+        <Divider orientation='vertical' flexItem/>
+        <section className='lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0'>
+          
+        </section>
       </main>
     </div>
   )
