@@ -1,9 +1,9 @@
 import React from 'react'
 import Cart from './Cart'
 import HomeIcon from '@mui/icons-material/Home';
-import { Card } from '@mui/material';
+import { Button, Card } from '@mui/material';
 
-const AddressCard = ({item,showButton}) => {
+const AddressCard = ({item,showButton,handleSelectAddress}) => {
   return (
     <Card className='flex gap-5 w-64 p-5' >
       <HomeIcon/>
@@ -12,6 +12,9 @@ const AddressCard = ({item,showButton}) => {
         <p>
           123, Main Street, City, Country
         </p>
+        {showButton && (
+          <Button variant='outlined' fullWidth onClick={handleSelectAddress(item)}>select </Button>
+        )}
       </div>
     </Card>
   )

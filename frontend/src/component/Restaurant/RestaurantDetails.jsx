@@ -23,8 +23,8 @@ const menu = [1,1,1,1,1,1];
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = React.useState("all");
   const handleFilter = (e) => {
-    console.log(e.target.value,e.target.name);
-  }  
+    setFoodType(e.target.value);
+  }; 
   return (
     <div className='px-5 lg:px-20'>
       <section>
