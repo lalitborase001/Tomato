@@ -1,4 +1,6 @@
 import React from 'react'
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 const CartItem = () => {
   return (
@@ -14,11 +16,19 @@ const CartItem = () => {
             <p>biryani</p>
             <div className='flex justify-between items-center'>
               <div className='flex items-center space-x-1'>
-
+                <IconButton>
+                    <RemoveCircleOutlineIcon />
+                </IconButton>
+                <div className='w-5 h-5 text-xs flex items-center justify-center'>
+                  {5}
+                </div>
+                <IconButton>
+                    <AddCircleOutlineIcon />
+                </IconButton>
               </div>
             </div>
           </div>
-
+          <p>$12.99</p>
         </div>
       </div>
     </div>
