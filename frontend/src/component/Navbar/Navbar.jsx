@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton, Avatar } from "@mui/material";
+import { IconButton, Avatar, Box } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { pink } from "@mui/material/colors";
@@ -8,7 +8,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 
+    <Box className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 
     flex justify-between"> 
       
         <div className="logo font-semibold text-gray-300 text-2xl">
@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
 
       </div>
-    </div>
+    </Box>
   );
 };
 export default Navbar
