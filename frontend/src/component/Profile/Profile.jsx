@@ -22,8 +22,10 @@ const Profile = () => {
       <div className="lg:w-[80%] ">
         <Routes>
           <Route path="/" element={<UserProfile/>} />
-          <Route path="/orders" element={<UserProfile/>} />
-          <Route path="/address" element={<UserProfile/>} />
+          <Route path="/orders" element={<Orders/>} />
+          <Route path="/address" element={<Address/>} />
+          <Route path="/favorites" element={<Favorites/>} />
+          <Route path="/events" element={<Events/>} />
         </Routes>
       </div>
 

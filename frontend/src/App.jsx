@@ -15,7 +15,8 @@ function App() {
         {/* <RestaurantDetails /> */}
         {/*<Cart />*/}
         {/*<Home />*/}
-        <Profile/>
+        {/*<Profile/>*/}
+        <CustomerRoute /> 
         </ThemeProvider>
   );
 }
