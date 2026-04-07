@@ -6,7 +6,7 @@ import { AddLocation } from '@mui/icons-material';
 import * as Yup from "yup";
 import { Form } from 'formik';
 
-const style = {
+export const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',

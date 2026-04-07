@@ -33,7 +33,7 @@ export const EventCard = () => {
           </div>
         </CardContent>
 
-      {true && 
+      {false && 
         <CardActions>
           <IconButton color="error">
             <DeleteIcon />

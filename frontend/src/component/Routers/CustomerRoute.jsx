@@ -15,6 +15,7 @@ export const CustomerRoute = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/my-profile/*" element={<Profile />} />
       </Routes>
+      <Auth />
     </div>
   );
 };
