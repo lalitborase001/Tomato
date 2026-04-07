@@ -10,7 +10,8 @@ const initialValues={
 export default function RegisterForm() {
   const navigate = useNavigate()
   const handleSubmit = () => {
-  }
+    console.log("form values", values)
+  };
   return (
     <div>
       <Typography variant="h5" className="text-center">
@@ -43,14 +44,14 @@ export default function RegisterForm() {
               variant="outlined"
               margin="normal"
             />
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Role</InputLabel>
+            <FormControl fullWidth margin="normal">
+              <InputLabel id="role-simple-select-label">Role</InputLabel>
               <Field
               as={Select}
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="role-simple-select-label"
+                id="role-simple-select"
                 //value={age}
-                label="Age"
+                name="role"
                 //onChange={handleChange}
               >
                 <MenuItem value={"ROLE_CUSTOMER"}>Customer</MenuItem>
