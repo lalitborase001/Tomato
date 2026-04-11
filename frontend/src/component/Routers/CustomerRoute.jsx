@@ -1,4 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Navbar from "../Navbar/Navbar";
+import Home from "../Home/Home";
+import RestaurantDetails from "../Restaurant/RestaurantDetails";
+import Cart from "../Cart/Cart";
+
+// React Router imports
+import { Routes, Route } from 'react-router-dom';
 
 export const CustomerRoute = () => {
   return (
@@ -10,7 +17,7 @@ export const CustomerRoute = () => {
         <Route path="/account/register" element={<Home />} />
         <Route
           path="/restaurant/:city/:title/:id"
-          element={<RestaurantDetail />}
+          element={<RestaurantDetails />}
         />
         <Route path="/cart" element={<Cart />} />
         <Route path="/my-profile/*" element={<Profile />} />

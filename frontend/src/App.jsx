@@ -6,6 +6,8 @@ import  DarkTheme  from './Theme/DarkTheme';
 import { CssBaseline } from '@mui/material';
 import RestaurantDetails from './component/Restaurant/RestaurantDetails';
 import Cart from './component/Cart/Cart';
+import CustomerRoute from "./component/Routers/CustomerRoute";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
