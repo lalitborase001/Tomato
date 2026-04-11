@@ -1,5 +1,6 @@
 import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { CardActions, IconButton } from "@mui/material";
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 
 export const EventCard = () => {
