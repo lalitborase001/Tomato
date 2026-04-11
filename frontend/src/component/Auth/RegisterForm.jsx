@@ -1,4 +1,6 @@
-import { Field } from 'formik'
+import { useNavigate } from "react-router-dom";
+import { Formik, Form, Field } from "formik";
+import { TextField, Button, Typography, MenuItem, Select, InputLabel, FormControl } from "@mui/material";
 import React from 'react'
 
 const initialValues={
@@ -7,15 +9,15 @@ const initialValues={
   password:"",
   role:"ROLE_CUSTOMER"
 }
-export default function RegisterForm() {
+const RegisterForm = () => {
   const navigate = useNavigate()
-  const handleSubmit = () => {
+  const handleSubmit = (values) => {
     console.log("form values", values)
   };
   return (
     <div>
       <Typography variant="h5" className="text-center">
-        Login
+        Register
       </Typography>
 
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
@@ -56,7 +58,7 @@ export default function RegisterForm() {
               >
                 <MenuItem value={"ROLE_CUSTOMER"}>Customer</MenuItem>
                 <MenuItem value={"ROLE_RESTAURANT_OWNER"}>Restaurant Owner</MenuItem>
-              </Select>
+              </Field>
             </FormControl>
             <Button sx={{mt:2,padding:'1rem'}}  className='mt-5' fullWidth type='submit' variant='contained'>Register</Button>
         </Form>
@@ -71,4 +73,4 @@ export default function RegisterForm() {
   )
 }
 
-export default RegisterForm
+export default RegisterForm;
