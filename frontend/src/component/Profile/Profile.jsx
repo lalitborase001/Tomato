@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import UserProfile from "./UserProfile";
+import { Orders } from "./Orders";
+import Address from "./Address";
+import Favorites from "./Favorites";
+import { Events } from "./Events";
 import { ProfileNavigation } from "./ProfileNavigation";
 import { Route, Routes } from "react-router-dom";
 
