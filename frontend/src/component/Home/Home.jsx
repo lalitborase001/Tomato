@@ -17,7 +17,7 @@ const Home = () => {
           </p>
         </div>
 
-        {<div className='cover absolute top-0 left-0 right-0'></div>}
+        <div className='cover absolute top-0 left-0 right-0'></div>
         <div className='fadout'></div>
       </section>
 
