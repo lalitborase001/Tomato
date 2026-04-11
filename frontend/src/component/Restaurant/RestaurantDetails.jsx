@@ -34,21 +34,21 @@ const RestaurantDetails = () => {
             <Grid item xs={12}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="http://res.cloudinary.com/dcpesbd8q/image/upload/v1707802815/ux3x93xzfbgthudigv2.jpg"
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
                 alt="banner"
               />
             </Grid>
             <Grid item xs={12} lg={6}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="http://res.cloudinary.com/dcpesbd8q/image/upload/v1707802815/ux3x93xzfbgthudigv2.jpg"
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
                 alt="banner"
               />
             </Grid>
             <Grid item xs={12} lg={6}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="http://res.cloudinary.com/dcpesbd8q/image/upload/v1707802815/ux3x93xzfbgthudigv2.jpg"
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
                 alt="banner"
               />
             </Grid>
