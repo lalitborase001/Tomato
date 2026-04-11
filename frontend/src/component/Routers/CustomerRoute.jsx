@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Home from "../Home/Home";
 import RestaurantDetails from "../Restaurant/RestaurantDetails";
 import Cart from "../Cart/Cart";
+import Profile from "../Profile/Profile";
 
 // React Router imports
 import { Routes, Route } from 'react-router-dom';

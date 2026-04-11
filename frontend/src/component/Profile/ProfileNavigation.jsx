@@ -6,6 +6,10 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from "react-router-dom";
+import { useMediaQuery, Drawer, Divider } from "@mui/material";
+import AddReactionIcon from '@mui/icons-material/AddReaction';
+import EventIcon from '@mui/icons-material/Event';
 
 export const menu = [
   { title: "Orders", icon: <ShoppingBagIcon /> },
@@ -19,9 +23,11 @@ export const menu = [
 
 export const ProfileNavigation = ({ open, handleClose }) => {
     const isSmallScreen = useMediaQuery("(min-width:600px)");
-    const navigate = useNavigate(item) => {
+    const navigate = useNavigate();  
+
+    const handleNavigate = (item) => {
       navigate(`/my-profile/${item.title.toLowerCase()}`);
-    };  
+    }; 
   return (
     <div>
       <Drawer
