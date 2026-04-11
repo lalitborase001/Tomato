@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Chip } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { IconButton } from "@mui/material";
 
 const RestaurantCard = () => {
   return (

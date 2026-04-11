@@ -13,7 +13,7 @@ function App() {
   return (
         <ThemeProvider theme={DarkTheme}>
           <CssBaseline />
-<Navbar />          
+          
         {/* <RestaurantDetails /> */}
         {/*<Cart />*/}
         {/*<Home />*/}

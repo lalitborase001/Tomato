@@ -1,7 +1,7 @@
 import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { topMeals } from "./topMeal";
 import CarouselItem from "./CarouselItem";
 
@@ -16,16 +16,14 @@ const MultiItemCarousel = () => {
     autoplaySpeed: 2000
   };
   return (
-    <div>
-      <Slider {...settings}>
+    <div className="px-5">
+      <Swiper spaceBetween={20} slidesPerView={5} autoplay={{ delay: 2000 }}>
         {topMeals.map((item, index) => (
-          <CarouselItem 
-            key={index}
-            image={item.image} 
-            title={item.title} 
-          />
+          <SwiperSlide key={index}>
+            <CarouselItem image={item.image} title={item.title} />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </div>
   )
 }
