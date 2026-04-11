@@ -13,7 +13,7 @@ const AddressCard = ({item,showButton,handleSelectAddress}) => {
           123, Main Street, City, Country
         </p>
         {showButton && (
-          <Button variant='outlined' fullWidth onClick={handleSelectAddress(item)}>select </Button>
+          <Button variant='outlined' fullWidth onClick={() => handleSelectAddress(item)}>select </Button>
         )}
       </div>
     </Card>
