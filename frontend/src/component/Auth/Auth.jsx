@@ -1,5 +1,7 @@
 import { Modal, Box } from "@mui/material";
 import React from "react";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Auth = () => {
