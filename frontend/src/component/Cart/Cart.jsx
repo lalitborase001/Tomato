@@ -112,7 +112,7 @@ const Cart = () => {
                     label="Street Address"
                     fullWidth
                     variant="outlined"
-                    error={Boolean(ErrorMessage("streetAddress"))}
+                    error={false}
                     helperText={
                       <ErrorMessage name="streetAddress">
                         {(msg) => <span className='text-red-600'>{msg}</span>}
