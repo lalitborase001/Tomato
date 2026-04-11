@@ -2,7 +2,7 @@ import { Modal, Box } from "@mui/material";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const Auth = () => {
+const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const handleClose = () => {
@@ -23,7 +23,7 @@ export const Auth = () => {
           {location.pathname === "/account/register" ? (
             <h2 className="text-xl font-semibold">Register Form</h2>
           ) : (
-            <h2 className="text-xl font-semibold">Register Form</h2>
+            <h2 className="text-xl font-semibold">Login Form</h2>
           )}
 
         </Box>
@@ -31,3 +31,4 @@ export const Auth = () => {
     </>
   );
 };
+export default Auth;
