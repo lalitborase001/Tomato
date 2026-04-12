@@ -7,31 +7,34 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isRegister = location.pathname === "/account/register";
+  const isLogin = location.pathname === "/account/login";
+
   const handleClose = () => {
     navigate("/");
   };
 
   return (
-    <>
-      <Modal
-        open={location.pathname === "/account/register" ? (
-          <RegisterForm />
-        ) : (
-          <LoginForm />
-        )}
-        onClose={handleClose}
+    <Modal
+      open={isRegister || isLogin}   // ✅ boolean ONLY
+      onClose={handleClose}
+    >
+      <Box
+        className="bg-white p-6 rounded-lg w-[400px]"
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          outline: "none"
+        }}
       >
-        <Box className="bg-white p-5 rounded-md w-[400px] mx-auto mt-[10%]">
-          
-          {location.pathname === "/account/register" ? (
-            <h2 className="text-xl font-semibold">Register Form</h2>
-          ) : (
-            <h2 className="text-xl font-semibold">Login Form</h2>
-          )}
-
-        </Box>
-      </Modal>
-    </>
+        {/* ✅ SHOW FORM */}
+        {isRegister ? <RegisterForm /> : <LoginForm />}
+      </Box>
+    </Modal>
   );
 };
+
 export default Auth;

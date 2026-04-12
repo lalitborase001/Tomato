@@ -42,6 +42,7 @@ const RegisterForm = () => {
               as={TextField}
               name="password"
               label="Password"
+              type="password"
               fullWidth
               variant="outlined"
               margin="normal"

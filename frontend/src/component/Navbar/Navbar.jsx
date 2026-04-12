@@ -14,8 +14,11 @@ export const Navbar = () => {
     <Box className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 
     flex justify-between"> 
       
-        <div className="logo font-semibold text-gray-300 text-2xl">
-            Tomato
+        <div 
+          onClick={() => navigate("/")}
+          className="logo font-semibold text-gray-300 text-2xl cursor-pointer"
+        >
+          Tomato
         </div>
       <div className='flex items-center space-x-2 lg:space-x-10'>
         <div className=''>
@@ -30,8 +33,8 @@ export const Navbar = () => {
           </IconButton>}
         </div>
         <div className=''>
-          <IconButton>
-            <Badge color='secondary' badgeContent ={3}>
+          <IconButton onClick={() => navigate("/cart")}>
+            <Badge color='secondary' badgeContent={3}>
               <ShoppingCartIcon sx={{ fontSize: '1.5rem' }} />
             </Badge>
           </IconButton>

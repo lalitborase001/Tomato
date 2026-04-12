@@ -1,32 +1,30 @@
-import React from 'react';
+import { Routes, Route } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Home from "../Home/Home";
-import RestaurantDetails from "../Restaurant/RestaurantDetails";
 import Cart from "../Cart/Cart";
+import RestaurantDetails from "../Restaurant/RestaurantDetails";
 import Profile from "../Profile/Profile";
 import Auth from "../Auth/Auth";
 
-// React Router imports
-import { Routes, Route } from 'react-router-dom';
-
-export const CustomerRoute = () => {
+const CustomerRoute = () => {
   return (
     <div>
       <Navbar />
 
       <Routes>
-        <Route path="/account/login" element={<Auth />} />
-        <Route path="/account/register" element={<Auth />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/my-profile/*" element={<Profile />} />
         <Route
           path="/restaurant/:city/:title/:id"
           element={<RestaurantDetails />}
         />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/my-profile/*" element={<Profile />} />
       </Routes>
+
+      {/* ✅ Modal controlled by URL */}
       <Auth />
     </div>
   );
 };
 
-export default CustomerRoute
+export default CustomerRoute;
