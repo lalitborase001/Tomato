@@ -15,8 +15,8 @@ export const CustomerRoute = () => {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/account/register" element={<Home />} />
+        <Route path="/account/login" element={<Auth />} />
+        <Route path="/account/register" element={<Auth />} />
         <Route
           path="/restaurant/:city/:title/:id"
           element={<RestaurantDetails />}

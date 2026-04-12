@@ -25,7 +25,7 @@ export const Navbar = () => {
         </div>
         <div className=''>
           {false ? <Avatar sx={{bgcolor:"white",color:pink.A400}}>C</Avatar> : 
-          <IconButton onClick={()=> navigate("/cart")}>
+          <IconButton onClick={()=> navigate("/account/login")}>
             <Person/>
           </IconButton>}
         </div>

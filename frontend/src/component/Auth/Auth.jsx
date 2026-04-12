@@ -14,10 +14,11 @@ const Auth = () => {
   return (
     <>
       <Modal
-        open={
-          location.pathname === "/account/register" ||
-          location.pathname === "/account/login"
-        }
+        open={location.pathname === "/account/register" ? (
+          <RegisterForm />
+        ) : (
+          <LoginForm />
+        )}
         onClose={handleClose}
       >
         <Box className="bg-white p-5 rounded-md w-[400px] mx-auto mt-[10%]">
