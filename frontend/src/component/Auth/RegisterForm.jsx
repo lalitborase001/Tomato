@@ -27,6 +27,7 @@ const RegisterForm = () => {
             as={TextField}
             name="fullName"
             label="Full Name"
+            variant="outlined" 
             fullWidth
             margin="normal"
             InputProps={{ style: { color: "black" } }}
@@ -37,6 +38,7 @@ const RegisterForm = () => {
             as={TextField}
             name="email"
             label="Email"
+            variant="outlined" 
             fullWidth
             margin="normal"
             InputProps={{ style: { color: "black" } }}
@@ -48,13 +50,14 @@ const RegisterForm = () => {
             name="password"
             label="Password"
             type="password"
+            variant="outlined" 
             fullWidth
             margin="normal"
             InputProps={{ style: { color: "black" } }}
             InputLabelProps={{ style: { color: "black" } }}
           />
 
-          <FormControl fullWidth margin="normal">
+          <FormControl fullWidth margin="normal" variant="outlined">
             <InputLabel>Role</InputLabel>
             <Field as={Select} name="role" label="Role">
               <MenuItem value="ROLE_CUSTOMER">Customer</MenuItem>

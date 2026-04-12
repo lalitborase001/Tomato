@@ -26,6 +26,8 @@ export const LoginForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
+              InputProps={{ style: { color: "black" } }}
+              InputLabelProps={{ style: { color: "black" } }}
             />
             <Field
               as={TextField}
@@ -34,6 +36,8 @@ export const LoginForm = () => {
               fullWidth
               variant="outlined"
               margin="normal"
+              InputProps={{ style: { color: "black" } }}
+              InputLabelProps={{ style: { color: "black" } }}
             />
             <Button sx={{mt:2,padding:'1rem'}}  className='mt-5' fullWidth type='submit' variant='contained'>Login</Button>
         </Form>
