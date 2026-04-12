@@ -29,7 +29,8 @@ const RegisterForm = () => {
             label="Full Name"
             fullWidth
             margin="normal"
-            InputLabelProps={{ shrink: true }}
+            InputProps={{ style: { color: "black" } }}
+            InputLabelProps={{ style: { color: "black" } }}
           />
 
           <Field
@@ -38,6 +39,8 @@ const RegisterForm = () => {
             label="Email"
             fullWidth
             margin="normal"
+            InputProps={{ style: { color: "black" } }}
+            InputLabelProps={{ style: { color: "black" } }}
           />
 
           <Field
@@ -47,6 +50,8 @@ const RegisterForm = () => {
             type="password"
             fullWidth
             margin="normal"
+            InputProps={{ style: { color: "black" } }}
+            InputLabelProps={{ style: { color: "black" } }}
           />
 
           <FormControl fullWidth margin="normal">
