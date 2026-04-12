@@ -22,46 +22,45 @@ const RegisterForm = () => {
 
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         <Form>
+
           <Field
-              as={TextField}
-              name="fullName"
-              label="Full Name"
-              fullWidth
-              variant="outlined"
-              margin="normal"
-            />
+            as={TextField}
+            name="fullName"
+            label="Full Name"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{ shrink: true }}
+          />
+
           <Field
-              as={TextField}
-              name="email"
-              label="Email"
-              fullWidth
-              variant="outlined"
-              margin="normal"
-            />
-            <Field
-              as={TextField}
-              name="password"
-              label="Password"
-              type="password"
-              fullWidth
-              variant="outlined"
-              margin="normal"
-            />
-            <FormControl fullWidth margin="normal">
-              <InputLabel id="role-simple-select-label">Role</InputLabel>
-              <Field
-              as={Select}
-                labelId="role-simple-select-label"
-                id="role-simple-select"
-                //value={age}
-                name="role"
-                //onChange={handleChange}
-              >
-                <MenuItem value={"ROLE_CUSTOMER"}>Customer</MenuItem>
-                <MenuItem value={"ROLE_RESTAURANT_OWNER"}>Restaurant Owner</MenuItem>
-              </Field>
-            </FormControl>
-            <Button sx={{mt:2,padding:'1rem'}}  className='mt-5' fullWidth type='submit' variant='contained'>Register</Button>
+            as={TextField}
+            name="email"
+            label="Email"
+            fullWidth
+            margin="normal"
+          />
+
+          <Field
+            as={TextField}
+            name="password"
+            label="Password"
+            type="password"
+            fullWidth
+            margin="normal"
+          />
+
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Role</InputLabel>
+            <Field as={Select} name="role" label="Role">
+              <MenuItem value="ROLE_CUSTOMER">Customer</MenuItem>
+              <MenuItem value="ROLE_RESTAURANT_OWNER">Restaurant Owner</MenuItem>
+            </Field>
+          </FormControl>
+
+          <Button fullWidth type="submit" variant="contained" sx={{ mt: 2, p: 1.5 }}>
+            Register
+          </Button>
+
         </Form>
       </Formik>
       <Typography variant='body2' align='center' sx={{ mt: 3 }}>
