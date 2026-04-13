@@ -9,7 +9,9 @@ const initialValues={
 }
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const dispatch = useDispatch();
+  const handleSubmit = (values) => {
+    dispatch(loginUser({ userData:values, navigate }))
   }
   return (
     <div>

@@ -13,6 +13,7 @@ const RegisterForm = () => {
   const navigate = useNavigate()
   const handleSubmit = (values) => {
     console.log("form values", values)
+    dispatch(loginUser({ userData:values, navigate }))
   };
   return (
     <div>
