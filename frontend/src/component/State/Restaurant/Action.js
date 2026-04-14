@@ -310,3 +310,29 @@ export const createCategoryAction = ({reqData,restaurantId}) => {
     }
   };
 };
+
+export const getRestaurantsCategory = ({restaurantId,jwt}) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_RESTAURANTS_CATEGORY_REQUEST });
+    try {
+      const response = await api.get(
+        `api/restaurants/${restaurantId}/categories`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      dispatch({
+        type: GET_RESTAURANTS_CATEGORY_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log("error", error);
+      dispatch({
+        type: GET_RESTAURANTS_CATEGORY_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
