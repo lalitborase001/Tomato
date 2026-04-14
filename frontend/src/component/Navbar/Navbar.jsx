@@ -23,11 +23,10 @@ export const Navbar = () => {
     <Box className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 
     flex justify-between"> 
       
-        <div 
-          onClick={() => navigate("/")}
-          className="logo font-semibold text-gray-300 text-2xl cursor-pointer"
-        >
-          Tomato
+        <div className="lg:mr-10 cursor-pointer flex items-center space-x-4"> 
+          <li onClick={() => navigate("/")} className="logo font-semibold text-gray-700">
+            Tomato
+          </li>
         </div>
       <div className='flex items-center space-x-2 lg:space-x-10'>
         <div className=''>
