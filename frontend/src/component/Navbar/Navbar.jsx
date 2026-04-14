@@ -9,6 +9,7 @@ import { Person } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  const {auth}= useSelector((store) => store)
   const navigate = useNavigate()
   return (
     <Box className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 

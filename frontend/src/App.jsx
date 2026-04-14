@@ -8,8 +8,16 @@ import RestaurantDetails from './component/Restaurant/RestaurantDetails';
 import Cart from './component/Cart/Cart';
 import CustomerRoute from "./component/Routers/CustomerRoute";
 import { BrowserRouter } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 function App() {
+  const dispatch = useDispatch()
+  const jwt = localStorage.getItem("jwt")
+  const {auth}= useSelector((store) => store)
+  useEffect(() => {
+    dispatch(getUser(auth.jwt || jwt))
+  },[auth.jwt])
   return (
         <ThemeProvider theme={DarkTheme}>
           <CssBaseline />
