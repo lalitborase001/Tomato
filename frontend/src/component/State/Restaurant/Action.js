@@ -258,3 +258,55 @@ export const deleteEventAction = ({eventId,jwt}) => {
   };
 };
 
+export const getRestaurantsEvents = ({restaurantId,jwt}) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_RESTAURANTS_EVENTS_REQUEST });
+    try {
+      const response = await api.get(
+        `api/restaurants/${restaurantId}/events`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      dispatch({
+        type: GET_RESTAURANTS_EVENTS_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log("error", error);
+      dispatch({
+        type: GET_RESTAURANTS_EVENTS_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
+
+export const createCategoryAction = ({reqData,restaurantId}) => {
+  return async (dispatch) => {
+    dispatch({ type: CREATE_CATEGORY_REQUEST });
+    try {
+      const response = await api.post(
+        `api/admin/restaurants/${restaurantId}/categories`,
+        reqData,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      dispatch({
+        type: CREATE_CATEGORY_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log("error", error);
+      dispatch({
+        type: CREATE_CATEGORY_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
