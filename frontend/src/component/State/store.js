@@ -4,6 +4,7 @@ import { thunk } from "redux-thunk";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  restaurant : restaurantReducer
 });
 
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
