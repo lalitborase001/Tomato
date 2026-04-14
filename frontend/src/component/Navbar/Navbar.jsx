@@ -10,7 +10,15 @@ import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const {auth}= useSelector((store) => store)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const handleAvatarClick = () => {
+    if (auth.user?.role === "ROLE_CUSTOMER") {
+      navigate("/my-profile")
+    } else {
+      navigate("/admin/restaurant")
+    }
+  }
   return (
     <Box className="px-5 z-50 py-[.8rem] bg-[#e91e63] lg:px-20 
     flex justify-between"> 
@@ -28,7 +36,9 @@ export const Navbar = () => {
           </IconButton>
         </div>
         <div className=''>
-          {false ? <Avatar sx={{bgcolor:"white",color:pink.A400}}>C</Avatar> : 
+          {auth.user ? <Avatar sx={{bgcolor:"white",color:pink.A400}}>
+            {auth.user?.fullName[0].toUpperCase()}
+          </Avatar> : 
           <IconButton onClick={()=> navigate("/account/login")}>
             <Person/>
           </IconButton>}
