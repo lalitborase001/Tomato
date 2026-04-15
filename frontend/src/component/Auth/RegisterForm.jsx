@@ -10,10 +10,11 @@ const initialValues={
   role:"ROLE_CUSTOMER"
 }
 const RegisterForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
     console.log("form values", values)
-    dispatch(loginUser({ userData:values, navigate }))
+    dispatch(registerUser({ userData:values, navigate }))
   };
   return (
     <div>

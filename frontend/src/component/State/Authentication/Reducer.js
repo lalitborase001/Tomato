@@ -1,3 +1,5 @@
+import { GET_USER_SUCCESS } from "./ActionType"
+
 const initialState = {
   user: null,
   isLoading: false,
@@ -19,7 +21,9 @@ export const authReducer = (state = initialState, action) => {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       return { ...state, isLoading: false, jwt: action.payload, success: "Register Success" }
-    case ADD_TO_FAVORITE_SUCCESS:
+    case GET_USER_SUCCESS:
+      return { ...state, isLoading: false, user: action.payload }
+      case ADD_TO_FAVORITE_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -27,7 +31,9 @@ export const authReducer = (state = initialState, action) => {
         favorites: isPresentInFavorites(state.favorites, action.payload)
           ? state.favorites.filter((item) => item.id !== action.payload.id)
           : [action.payload, ...state.favorites]
-      }
+      };
+    case LOGOUT:
+      return initialState;
     
     case REGISTER_FAILURE:
     case LOGIN_FAILURE:
