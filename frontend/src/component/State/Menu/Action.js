@@ -101,3 +101,19 @@ export const updateMenuItemsAvailability = ({ foodId, jwt }) => {
     }
   };
 };
+
+export const deleteFoodAction = ({ foodId, jwt }) => async (dispatch) => {
+  dispatch({ type: DELETE_MENU_ITEM_REQUEST });
+  try {
+    const { data } = await api.delete(`/api/admin/food/${foodId}`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    });
+
+    console.log("delete food ", data);
+    dispatch({ type: DELETE_MENU_ITEM_SUCCESS, payload: foodId });
+  } catch (error) {
+    dispatch({ type: DELETE_MENU_ITEM_FAILURE, payload: error });
+  }
+};
