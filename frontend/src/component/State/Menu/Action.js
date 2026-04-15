@@ -51,3 +51,25 @@ export const searchMenuItem = ({ keyword, jwt }) => {
     }
   };
 };
+
+export const getAllIngredientsOfMenuItem = (reqData) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_ALL_INGREDIENTS_OF_MENU_ITEM_REQUEST });
+    try {
+      const { data } = await api.get(
+        `api/food/restaurant/${reqData.restaurantId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${reqData.jwt}`,
+          },
+        }
+      );
+
+      console.log("menu item by restaurants ", data);
+      dispatch({ type: GET_ALL_INGREDIENTS_OF_MENU_ITEM_SUCCESS, payload: data });
+    } catch (error) {
+      console.log("catch error ", error);
+      dispatch({ type: GET_ALL_INGREDIENTS_OF_MENU_ITEM_FAILURE, payload: error });
+    }
+  };
+};
