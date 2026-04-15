@@ -73,3 +73,31 @@ export const getAllIngredientsOfMenuItem = (reqData) => {
     }
   };
 };
+
+export const updateMenuItemsAvailability = ({ foodId, jwt }) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_MENU_ITEMS_AVAILABILITY_REQUEST });
+    try {
+      const { data } = await api.put(
+        `/api/admin/food/${foodId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+
+      console.log("update menuItems Availability ", data);
+      dispatch({
+        type: UPDATE_MENU_ITEMS_AVAILABILITY_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_MENU_ITEMS_AVAILABILITY_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
