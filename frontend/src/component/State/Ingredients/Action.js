@@ -99,3 +99,29 @@ export const getIngredientCategories = ({id, jwt}) => {
     }
   };
 };
+
+export const updateStockOfIngredient = ({ Id, jwt }) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_INGREDIENT_STOCK_REQUEST });
+    try { 
+      const response = await api.put(
+        `/api/admin/ingredients/${Id}/stock`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      dispatch({
+        type: UPDATE_INGREDIENT_STOCK_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_INGREDIENT_STOCK_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
