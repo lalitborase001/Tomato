@@ -4,7 +4,15 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton } from "@mui/material";
 
-const RestaurantCard = () => {
+const RestaurantCard = ({item}) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt")
+  const {auth}=useSelector(store=>store)
+
+  const handleAddToFavorite = () => {
+    dispatch(addToFavorite({restaurantId: item.id,jwt}))
+  }
   return (
     <Card className=" w-[18rem]">
       <div className={`${true ? "cursor-pointer" : "cursor-not-allowed"} relative`}>
@@ -29,7 +37,7 @@ const RestaurantCard = () => {
         </div>
         <div>
           <IconButton>
-            {true ? <FavoriteIcon  /> : <FavoriteBorderIcon />}
+            {isPresentInFavourites(auth.favourites,item) ? <FavoriteIcon  /> : <FavoriteBorderIcon />}
           </IconButton>
         </div>
       </div>

@@ -42,7 +42,36 @@ const cartReducer = (state = initialState, action) => {
         ),
       };
 
+    case actionTypes.REMOVE_CARTITEM_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        cartItems: state.cartItems.filter(
+          (item) => item.id !== action.payload
+        ),
+      };
+
+    case actionTypes.FIND_CART_FAILURE:
+    case actionTypes.UPDATE_CARTITEM_FAILURE:
+    case actionTypes.REMOVE_CARTITEM_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case LOGOUT:
+    localStorage.removeItem("jwt");
+      return {
+        ...state,
+        cart: null,
+        cartItems: [],
+        success: "logout success"
+      };
+
+
     default:
       return state;
   }
 };
+export default cartReducer;

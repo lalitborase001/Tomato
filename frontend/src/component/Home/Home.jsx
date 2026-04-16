@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use } from "react";
 import "./Home.css"
 import MultiItemCarousel from "./MultiItemCarousel";
 import RestaurantCard from "../Restaurant/RestaurantCard";
@@ -6,6 +6,13 @@ import RestaurantCard from "../Restaurant/RestaurantCard";
 const restaurant = [1,1,1,1,1,1,1,1,1,1,1,1];
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const jwt = localStorage.getItem("jwt")
+  const{restaurant} = useSelector((state) => state.restaurant)
+  console.log("restaurant", restaurant)
+  useEffect(() => {
+    dispatch(getAllRestaurant(jwt))
+  },[])
   return (
     <div className='pb-10'>
       
