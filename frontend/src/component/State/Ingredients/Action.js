@@ -21,3 +21,30 @@ export const getIngredientsOfRestaurant = ({ id, jwt }) => {
     }
   };
 };
+
+export const createIngredient = ({ data, jwt }) => {
+  return async (dispatch) => {
+    dispatch({ type: CREATE_INGREDIENT_REQUEST });
+    try {
+      const response = await api.post(
+        `/api/admin/ingredients`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+
+      dispatch({
+        type: CREATE_INGREDIENT_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CREATE_INGREDIENT_FAILURE,
+        payload: error,
+      });
+    }
+  };
+};
