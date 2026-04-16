@@ -37,3 +37,36 @@ export const getAllCartItems = (reqData) => {
     }
   };
 };
+
+export const addItemToCart = (reqData) => {
+  return async (dispatch) => {
+    dispatch({ type: ADD_ITEM_TO_CART_REQUEST });
+    try {
+      const response = await api.post("/api/cart/add/", reqData.cartItem, {
+        headers: {
+          Authorization: `Bearer ${reqData.token}`,
+        },
+      });
+      console.log("Add to cart response:", response.data);
+      dispatch({ type: ADD_ITEM_TO_CART_SUCCESS, payload: response.data });
+    } catch (error) {
+      dispatch({ type: ADD_ITEM_TO_CART_FAILURE, payload: error });
+    }
+  };
+};
+
+export const updateCartItem = (reqData) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_CARTITEM_REQUEST });
+    try {
+      const response = await api.put("/api/cart/update/", reqData.cartItem, {
+        headers: {
+          Authorization: `Bearer ${reqData.jwt}`,
+        },
+      });
+      dispatch({ type: UPDATE_CARTITEM_SUCCESS, payload: response.data });
+    } catch (error) {
+      dispatch({ type: UPDATE_CARTITEM_FAILURE, payload: error });
+    }
+  };
+};
