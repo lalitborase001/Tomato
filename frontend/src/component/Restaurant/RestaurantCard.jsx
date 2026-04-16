@@ -16,15 +16,15 @@ const RestaurantCard = () => {
         <Chip
         size="small"
         className="absolute top-2 left-2"
-        color={true?"success":"error"}
-        label={true ? "Open" : "Closed"}
+        color={item.open?"success":"error"}
+        label={item.open ? "Open" : "Closed"}
       />
       </div>
       <div className="p-4 textPart lg:flex w-full justify-between">
         <div className="space-y-1">
-          <p className="font-semibold text-lg">Indian Fast Food</p>
+          <p className="font-semibold text-lg">{item.name}</p>
           <p className="text-gray-500 text-sm">
-            Craving it all? Dive into our global fla...
+            {item.description}
           </p>
         </div>
         <div>

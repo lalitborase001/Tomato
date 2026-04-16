@@ -6,7 +6,10 @@ const rootReducer = combineReducers({
   auth: authReducer,
   restaurant : restaurantReducer,
   menu : menuItemReducer,
-  cart : cartReducer
+  cart : cartReducer,
+  order : orderReducer, 
+  restaurantOrders : restaurantsOrderReducer,
+  ingredient : ingredientReducer,
 });
 
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
