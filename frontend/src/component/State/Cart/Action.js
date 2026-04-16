@@ -20,3 +20,20 @@ export const findCart = (token) => {
     }
   };
 };
+
+export const getAllCartItems = (reqData) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_ALL_CART_ITEMS_REQUEST });
+    try {
+      const response = await api.get("/api/cart/items/", {
+        headers: {
+          Authorization: `Bearer ${reqData.token}`,
+        },
+      });
+
+      dispatch({ type: GET_ALL_CART_ITEMS_SUCCESS, payload: response.data });
+    } catch (error) {
+      dispatch({ type: GET_ALL_CART_ITEMS_FAILURE, payload: error });
+    }
+  };
+};
