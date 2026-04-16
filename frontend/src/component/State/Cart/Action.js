@@ -88,3 +88,27 @@ export const removeCartItem = ({cartItemId,jwt}) => {
     }
   };
 };
+
+export const clearCartAction = () => {
+  return async (dispatch) => {
+    dispatch({ type: CLEAR_CART_REQUEST });
+    try {
+      const { data } = await api.put(
+        "/api/cart/clear",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
+
+      dispatch({ type: CLEAR_CART_SUCCESS, payload: data });
+      console.log("clear cart ", data);
+    } catch (error) {
+      console.log("catch error ", error);
+      dispatch({ type: CLEAR_CART_FAILURE, payload: error.message });
+    }
+  };
+};
+
