@@ -74,3 +74,28 @@ export const createIngredientCategory = ({ data, jwt }) => {
     }
   };
 };
+
+export const getIngredientCategories = ({id, jwt}) => {
+  return async (dispatch) => {
+    dispatch({ type: GET_INGREDIENT_CATEGORIES_REQUEST });
+    try {
+      const response = await api.get(
+        `/api/admin/ingredients/restaurant/${id}/categories`,
+        {
+           headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      dispatch({
+        type: GET_INGREDIENT_CATEGORIES_SUCCESS,
+        payload: response.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_INGREDIENT_CATEGORIES_FAILURE,  
+        payload: error,
+      });
+    }
+  };
+};
