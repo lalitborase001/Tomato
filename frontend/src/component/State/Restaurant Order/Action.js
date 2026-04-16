@@ -28,4 +28,32 @@ export const updateOrderStatus = ({ orderId, orderStatus, jwt }) => {
       });
     }
   };
+}; 
+
+export const fetchRestaurantOrders = ({restaurantId,orderStatus, jwt}) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_RESTAURANT_ORDERS_REQUEST });
+      const response = await api.get(
+        `/api/admin/restaurants/${restaurantId}/orders?status=${orderStatus}`,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+
+      const orders = response.data;
+
+      dispatch({
+        type: GET_RESTAURANT_ORDERS_SUCCESS,
+        payload: orders,
+      });
+    } catch (error) {
+      dispatch({
+        type: GET_RESTAURANT_ORDERS_FAILURE,
+        payload: error,
+      });
+    }
+  };
 };
