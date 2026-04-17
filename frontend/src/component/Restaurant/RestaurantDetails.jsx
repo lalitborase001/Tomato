@@ -1,7 +1,7 @@
 import { Divider, Grid, Typography, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import React from 'react';
+import React, { use } from 'react';
 
 export const categories = [
   "pizza",
@@ -22,9 +22,22 @@ const menu = [1,1,1,1,1,1];
 
 const RestaurantDetails = () => {
   const [foodType, setFoodType] = React.useState("all");
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt")
+  const {auth,restaurant}=useSelector(store=>store)
+
+  const {id,city} = useParams();
+
   const handleFilter = (e) => {
-    setFoodType(e.target.value);
+    setFoodType(e.target.value,e.target.name);
   }; 
+  console.log("restaurant", restaurant)
+
+  useEffect(() => {
+    dispatch(getRestaurantById({ restaurantid: id, jwt }))
+  }, []);
+
   return (
     <div className='px-5 lg:px-20'>
       <section>
@@ -55,9 +68,9 @@ const RestaurantDetails = () => {
           </Grid>
         </div>
         <div className="pt-3 pb-5">
-          <h1 className="text-4xl font-semibold">Indian Fast Food</h1>   
+          <h1 className="text-4xl font-semibold">{restaurant.restaurant?.name}</h1>   
           <p className="text-gray-500 mt-1 line-clamp-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat cum at porro, natus facere eveniet laborum, odio molestiae consequatur dolore suscipit nulla a, dolorum exercitationem eum? Atque numquam autem repellat.
+            {restaurant.restaurant?.description}
           </p>
           <div className="space-y-3 mt-3">   
             <p className="text-gray-500 flex items-center gap-3">
