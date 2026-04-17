@@ -36,7 +36,7 @@ const RestaurantCard = ({item}) => {
           </p>
         </div>
         <div>
-          <IconButton>
+          <IconButton onClick={handleAddToFavorite} disabled={!jwt}>
             {isPresentInFavourites(auth.favourites,item) ? <FavoriteIcon  /> : <FavoriteBorderIcon />}
           </IconButton>
         </div>
