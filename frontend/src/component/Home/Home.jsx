@@ -9,10 +9,13 @@ const Home = () => {
   const dispatch = useDispatch()
   const jwt = localStorage.getItem("jwt")
   const{restaurant} = useSelector((state) => state.restaurant)
+  const navigate = useNavigate()
   console.log("restaurant", restaurant)
   useEffect(() => {
     dispatch(getAllRestaurant(jwt))
   },[])
+
+  
   return (
     <div className='pb-10'>
       

@@ -316,7 +316,7 @@ export const getRestaurantsCategory = ({restaurantId,jwt}) => {
     dispatch({ type: GET_RESTAURANTS_CATEGORY_REQUEST });
     try {
       const response = await api.get(
-        `api/restaurants/${restaurantId}/categories`,
+        `api/category/restaurants/${restaurantId}`,
         {
           headers: {
             Authorization: `Bearer ${jwt}`,

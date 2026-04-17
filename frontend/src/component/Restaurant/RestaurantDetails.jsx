@@ -3,13 +3,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import React, { use } from 'react';
 
-export const categories = [
-  "pizza",
-  "biryani",
-  "burger",
-  "chicken",
-  "rice"
-];
+
 
 export const foodTypes = [
   { label: "All", value: "all" },
@@ -36,6 +30,8 @@ const RestaurantDetails = () => {
 
   useEffect(() => {
     dispatch(getRestaurantById({ restaurantid: id, jwt }))
+    dispatch(getRestaurantCategory({jwt,  restaurantId: id }))
+    dispatch(getMenuItemsByRestaurantId({jwt, restaurantId: id}))
   }, []);
 
   return (
@@ -47,21 +43,21 @@ const RestaurantDetails = () => {
             <Grid item xs={12}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+                src={restaurant.restaurant?.image[0]}
                 alt="banner"
               />
             </Grid>
             <Grid item xs={12} lg={6}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+                src={restaurant.restaurant?.image[1]}
                 alt="banner"
               />
             </Grid>
             <Grid item xs={12} lg={6}>
               <img
                 className="w-full h-[40vh] object-cover"
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+                src={restaurant.restaurant?.image[2]}
                 alt="banner"
               />
             </Grid>
@@ -119,12 +115,12 @@ const RestaurantDetails = () => {
 
               <FormControl className="py-5 space-y-5" component="fieldset">
                 <RadioGroup onChange= {handleFilter} name ="foodType" value={foodType}>
-                  {categories.map((item) => (
+                  {restaurant.categories.map((item) => (
                     <FormControlLabel
                       key={item}
                       value={item}
                       control={<Radio />}
-                      label={item}
+                      label={item.name}
                     />
                   ))}
                 </RadioGroup>
