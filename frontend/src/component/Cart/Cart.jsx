@@ -37,6 +37,8 @@ const Cart = () => {
   const createOrderUsingSelectedAddress=() => {};
   const handleOpenAddressModel = () => setOpen(true);
   const [open, setOpen] = React.useState(false);
+  const {cart} = useSelector((store) => store);
+
   const handleClose = () => setOpen(false);
   const handleSubmit = (values) => {
     console.log("form values", values);
@@ -45,7 +47,7 @@ const Cart = () => {
     <>
       <main className='lg:flex justify-between'>
         <section className='lg:w-[30%] space-y-6 lg:min-h-screen pt-10'>
-          {items.map((item) => <CartItem />)}
+          {cart.cart?.cartItems.map((item) => <CartItem />)}
           <Divider/>
           <div className='billDetails px-5 text-sm'>
             <p className='font-extralight py-5'>Bill Details</p>
