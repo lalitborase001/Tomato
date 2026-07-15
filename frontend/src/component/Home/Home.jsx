@@ -59,8 +59,8 @@ const Home = () => {
           {(restaurants?.length ? restaurants : dummyRestaurant).map(
             (item, index) => (
               <RestaurantCard
-                key={item.id || index}
-                restaurant={item}
+                key={item?.id || index}
+                item={item}
               />
             )
           )}
