@@ -1,19 +1,33 @@
 export const getAllRestaurantsAction = (token) => {
   return async (dispatch) => {
-    dispatch({type: GET_ALL_RESTAURANTS_REQUEST});
+    console.log("Restaurant Action Started");
+    console.log("Token:", token);
+
+    dispatch({ type: GET_ALL_RESTAURANTS_REQUEST });
+
     try {
+      console.log("Calling API...");
+
       const { data } = await api.get("/api/restaurants", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      dispatch({type: GET_ALL_RESTAURANTS_SUCCESS, payload: data});
-      console.log("all restaurant ", data);
+      console.log("Response:", data);
+
+      dispatch({
+        type: GET_ALL_RESTAURANTS_SUCCESS,
+        payload: data,
+      });
 
     } catch (error) {
-      console.log("error", error);
-      dispatch({type: GET_ALL_RESTAURANTS_FAILURE, payload: error});
+      console.error(error);
+
+      dispatch({
+        type: GET_ALL_RESTAURANTS_FAILURE,
+        payload: error,
+      });
     }
   };
 };
