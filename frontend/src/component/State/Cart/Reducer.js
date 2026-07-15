@@ -1,12 +1,17 @@
+import * as actionTypes from "./ActionType"; // Change to "./ActionTypes" if your file is named ActionTypes.js
+import { LOGOUT } from "../Authentication/ActionType";
+
 const initialState = {
   cart: null,
   cartItems: [],
   loading: false,
   error: null,
+  success: null,
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+
     case actionTypes.FIND_CART_REQUEST:
     case actionTypes.GET_ALL_CART_ITEMS_REQUEST:
     case actionTypes.UPDATE_CARTITEM_REQUEST:
@@ -23,7 +28,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         cart: action.payload,
-        cartItems: action.payload.items,
+        cartItems: action.payload?.items || [],
       };
 
     case actionTypes.ADD_ITEM_TO_CART_SUCCESS:
@@ -52,6 +57,7 @@ const cartReducer = (state = initialState, action) => {
       };
 
     case actionTypes.FIND_CART_FAILURE:
+    case actionTypes.GET_ALL_CART_ITEMS_FAILURE:
     case actionTypes.UPDATE_CARTITEM_FAILURE:
     case actionTypes.REMOVE_CARTITEM_FAILURE:
       return {
@@ -61,17 +67,15 @@ const cartReducer = (state = initialState, action) => {
       };
 
     case LOGOUT:
-    localStorage.removeItem("jwt");
+      localStorage.removeItem("jwt");
       return {
-        ...state,
-        cart: null,
-        cartItems: [],
-        success: "logout success"
+        ...initialState,
+        success: "Logout Success",
       };
-
 
     default:
       return state;
   }
 };
+
 export default cartReducer;

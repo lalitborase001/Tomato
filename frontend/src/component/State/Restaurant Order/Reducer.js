@@ -1,3 +1,5 @@
+import * as actionTypes from "./ActionType"; // or "./ActionTypes"
+
 const initialState = {
   loading: false,
   error: null,
@@ -6,25 +8,47 @@ const initialState = {
 
 const restaurantsOrderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_RESTAURANTS_ORDER_REQUEST:
-    case UPDATE_ORDER_STATUS_REQUEST:
-      return { ...state, loading: true, error: null };
 
-    case GET_RESTAURANTS_ORDER_SUCCESS:
-      return { ...state, loading: false, orders: action.payload };
+    // ================= REQUEST =================
+    case actionTypes.GET_RESTAURANTS_ORDER_REQUEST:
+    case actionTypes.UPDATE_ORDER_STATUS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
 
-    case UPDATE_ORDER_STATUS_SUCCESS:
-      const updatedOrders = state.orders.map((order) =>
-        order.id === action.payload.id ? action.payload : order
-      );
-      return { ...state, loading: false, orders: updatedOrders };
+    // ================= SUCCESS =================
+    case actionTypes.GET_RESTAURANTS_ORDER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        orders: action.payload,
+      };
 
-    case GET_RESTAURANTS_ORDER_FAILURE:
-    case UPDATE_ORDER_STATUS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+    case actionTypes.UPDATE_ORDER_STATUS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        orders: state.orders.map((order) =>
+          order.id === action.payload.id ? action.payload : order
+        ),
+      };
+
+    // ================= FAILURE =================
+    case actionTypes.GET_RESTAURANTS_ORDER_FAILURE:
+    case actionTypes.UPDATE_ORDER_STATUS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     default:
       return state;
   }
 };
+
 export default restaurantsOrderReducer;

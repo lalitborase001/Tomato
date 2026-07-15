@@ -1,47 +1,80 @@
-import { GET_INGREDIENT_CATEGORY_SUCCESS } from "./ActionType";
+import * as actionTypes from "./ActionType";
 
 const initialState = {
   ingredients: [],
   update: null,
   category: [],
+  loading: false,
+  error: null,
 };
 
-export const ingredientReducer = (state = initialState, action) => {
+const ingredientReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_INGREDIENTS:
+
+    // ================= REQUEST =================
+    case actionTypes.GET_INGREDIENTS_REQUEST:
+    case actionTypes.CREATE_INGREDIENT_REQUEST:
+    case actionTypes.CREATE_INGREDIENT_CATEGORY_REQUEST:
+    case actionTypes.UPDATE_STOCK_REQUEST:
       return {
         ...state,
+        loading: true,
+        error: null,
+      };
+
+    // ================= SUCCESS =================
+    case actionTypes.GET_INGREDIENTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
         ingredients: action.payload,
       };
 
-    case CREATE_INGREDIENT_CATEGORY_SUCCESS:
+    case actionTypes.CREATE_INGREDIENT_CATEGORY_SUCCESS:
       return {
         ...state,
+        loading: false,
         category: [...state.category, action.payload],
       };
 
-    case GET_INGREDIENT_CATEGORY_SUCCESS:
+    case actionTypes.GET_INGREDIENT_CATEGORY_SUCCESS:
       return {
         ...state,
+        loading: false,
         category: action.payload,
       };
 
-    case CREATE_INGREDIENT_SUCCESS:
+    case actionTypes.CREATE_INGREDIENT_SUCCESS:
       return {
         ...state,
+        loading: false,
         ingredients: [...state.ingredients, action.payload],
       };
 
-    case UPDATE_STOCK:
-      const updatedIngredients = state.ingredients.map((ingredient) =>
-        ingredient.id === action.payload.id ? action.payload : ingredient
-      );
+    case actionTypes.UPDATE_STOCK_SUCCESS:
       return {
         ...state,
-        ingredients: updatedIngredients,
+        loading: false,
+        ingredients: state.ingredients.map((ingredient) =>
+          ingredient.id === action.payload.id ? action.payload : ingredient
+        ),
+      };
+
+    // ================= FAILURE =================
+    case actionTypes.GET_INGREDIENTS_FAILURE:
+    case actionTypes.CREATE_INGREDIENT_FAILURE:
+    case actionTypes.CREATE_INGREDIENT_CATEGORY_FAILURE:
+    case actionTypes.GET_INGREDIENT_CATEGORY_FAILURE:
+    case actionTypes.UPDATE_STOCK_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
 
     default:
       return state;
   }
 };
+
+export default ingredientReducer;

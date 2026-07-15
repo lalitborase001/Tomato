@@ -1,34 +1,31 @@
-import { ThemeProvider } from '@mui/material/styles';
-import './App.css'
-import Home from "./component/Home/Home";
-import Navbar  from './component/Navbar/Navbar'
-import  DarkTheme  from './Theme/DarkTheme';
-import { CssBaseline } from '@mui/material';
-import RestaurantDetails from './component/Restaurant/RestaurantDetails';
-import Cart from './component/Cart/Cart';
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import "./App.css";
+import DarkTheme from "./Theme/DarkTheme";
 import CustomerRoute from "./component/Routers/CustomerRoute";
-import { BrowserRouter } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { getUser } from "./component/State/Authentication/Action";
 
 function App() {
-  const dispatch = useDispatch()
-  const jwt = localStorage.getItem("jwt")
-  const {auth}= useSelector((store) => store)
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+
+  const jwt = auth?.jwt || localStorage.getItem("jwt");
+
   useEffect(() => {
-    dispatch(getUser(auth.jwt || jwt))
-  },[auth.jwt])
+    if (jwt) {
+      dispatch(getUser(jwt));
+    }
+  }, [dispatch, jwt]);
+
   return (
-        <ThemeProvider theme={DarkTheme}>
-          <CssBaseline />
-          
-        {/* <RestaurantDetails /> */}
-        {/*<Cart />*/}
-        {/*<Home />*/}
-        {/*<Profile/>*/}
-        <CustomerRoute /> 
-        </ThemeProvider>
+    <ThemeProvider theme={DarkTheme}>
+      <CssBaseline />
+      <CustomerRoute />
+    </ThemeProvider>
   );
 }
 
-export default App
+export default App;

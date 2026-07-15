@@ -1,4 +1,4 @@
-import { GET_USER_SUCCESS } from "./ActionType"
+import * as actionTypes from "./ActionType";
 
 const initialState = {
   user: null,
@@ -6,46 +6,83 @@ const initialState = {
   error: null,
   jwt: null,
   favorites: [],
-  success : null
-}
+  success: null,
+};
 
-export const authReducer = (state = initialState, action) => {
+const isPresentInFavorites = (favorites, restaurant) => {
+  return favorites.some((item) => item.id === restaurant.id);
+};
+
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case REGISTER_REQUEST:
-    case LOGIN_REQUEST:
-    case GET_USER_REQUEST:
-    case ADD_TO_FAVORITE_REQUEST:
-      return { ...state, isLoading: true, error: null, success: null }
+    case actionTypes.REGISTER_REQUEST:
+    case actionTypes.LOGIN_REQUEST:
+    case actionTypes.GET_USER_REQUEST:
+    case actionTypes.ADD_TO_FAVORITE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+        success: null,
+      };
 
-    case REGISTER_SUCCESS:
-    case LOGIN_SUCCESS:
-      return { ...state, isLoading: false, jwt: action.payload, success: "Register Success" }
-    case GET_USER_SUCCESS:
-      return { ...state, isLoading: false, user: action.payload ,favourites: action.payload.favorites}
-      case ADD_TO_FAVORITE_SUCCESS:
+    case actionTypes.REGISTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        jwt: action.payload,
+        success: "Register Success",
+      };
+
+    case actionTypes.LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        jwt: action.payload,
+        success: "Login Success",
+      };
+
+    case actionTypes.GET_USER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.payload,
+        favorites: action.payload.favorites || [],
+      };
+
+    case actionTypes.ADD_TO_FAVORITE_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
         favorites: isPresentInFavorites(state.favorites, action.payload)
-          ? state.favorites.filter((item) => item.id !== action.payload.id)
-          : [action.payload, ...state.favorites]
+          ? state.favorites.filter(
+              (item) => item.id !== action.payload.id
+            )
+          : [action.payload, ...state.favorites],
       };
-    case LOGOUT:
-      return initialState;
-    
-    case REGISTER_FAILURE:
-    case LOGIN_FAILURE:
-    case GET_USER_FAILURE:
-    case ADD_TO_FAVORITE_FAILURE:
+
+    case actionTypes.LOGOUT:
+      localStorage.removeItem("jwt");
+      return {
+        ...initialState,
+      };
+
+    case actionTypes.REGISTER_FAILURE:
+    case actionTypes.LOGIN_FAILURE:
+    case actionTypes.GET_USER_FAILURE:
+    case actionTypes.ADD_TO_FAVORITE_FAILURE:
       return {
         ...state,
         isLoading: false,
         error: action.payload,
         success: null,
       };
+
     default:
       return state;
   }
-}
+};
+
+export default authReducer;

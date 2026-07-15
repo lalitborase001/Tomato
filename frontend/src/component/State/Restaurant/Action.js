@@ -284,7 +284,7 @@ export const getRestaurantsEvents = ({restaurantId,jwt}) => {
   };
 };
 
-export const createCategoryAction = ({reqData,restaurantId}) => {
+export const createCategoryAction = ({reqData,restaurantId,jwt}) => {
   return async (dispatch) => {
     dispatch({ type: CREATE_CATEGORY_REQUEST });
     try {
