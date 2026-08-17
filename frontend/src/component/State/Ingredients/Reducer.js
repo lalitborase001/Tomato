@@ -12,10 +12,8 @@ const ingredientReducer = (state = initialState, action) => {
   switch (action.type) {
 
     // ================= REQUEST =================
-    case actionTypes.GET_INGREDIENTS_REQUEST:
     case actionTypes.CREATE_INGREDIENT_REQUEST:
     case actionTypes.CREATE_INGREDIENT_CATEGORY_REQUEST:
-    case actionTypes.UPDATE_STOCK_REQUEST:
       return {
         ...state,
         loading: true,
@@ -23,7 +21,7 @@ const ingredientReducer = (state = initialState, action) => {
       };
 
     // ================= SUCCESS =================
-    case actionTypes.GET_INGREDIENTS_SUCCESS:
+    case actionTypes.GET_INGREDIENTS:
       return {
         ...state,
         loading: false,
@@ -51,7 +49,7 @@ const ingredientReducer = (state = initialState, action) => {
         ingredients: [...state.ingredients, action.payload],
       };
 
-    case actionTypes.UPDATE_STOCK_SUCCESS:
+    case actionTypes.UPDATE_STOCK:
       return {
         ...state,
         loading: false,
@@ -61,11 +59,9 @@ const ingredientReducer = (state = initialState, action) => {
       };
 
     // ================= FAILURE =================
-    case actionTypes.GET_INGREDIENTS_FAILURE:
     case actionTypes.CREATE_INGREDIENT_FAILURE:
     case actionTypes.CREATE_INGREDIENT_CATEGORY_FAILURE:
     case actionTypes.GET_INGREDIENT_CATEGORY_FAILURE:
-    case actionTypes.UPDATE_STOCK_FAILURE:
       return {
         ...state,
         loading: false,

@@ -2,7 +2,7 @@ import React from "react";
 import RestaurantCard from "../Restaurant/RestaurantCard";
 
 export default function Favorites() {
-  const {auth} = useSelector(store => store)
+  const auth = useSelector(store => store.auth)
   return (
     <div>
       <h1 className="py-5 text-xl font-semibold text-center">

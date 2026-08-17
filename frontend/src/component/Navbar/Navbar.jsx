@@ -15,7 +15,8 @@ import { useSelector } from "react-redux";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { auth, cart } = useSelector((state) => state);
+  const auth = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
   const handleAvatarClick = () => {

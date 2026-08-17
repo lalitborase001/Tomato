@@ -10,7 +10,7 @@ const restaurantsOrderReducer = (state = initialState, action) => {
   switch (action.type) {
 
     // ================= REQUEST =================
-    case actionTypes.GET_RESTAURANTS_ORDER_REQUEST:
+    case actionTypes.GET_RESTAURANT_ORDERS_REQUEST:
     case actionTypes.UPDATE_ORDER_STATUS_REQUEST:
       return {
         ...state,
@@ -19,7 +19,7 @@ const restaurantsOrderReducer = (state = initialState, action) => {
       };
 
     // ================= SUCCESS =================
-    case actionTypes.GET_RESTAURANTS_ORDER_SUCCESS:
+    case actionTypes.GET_RESTAURANT_ORDERS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -38,7 +38,7 @@ const restaurantsOrderReducer = (state = initialState, action) => {
       };
 
     // ================= FAILURE =================
-    case actionTypes.GET_RESTAURANTS_ORDER_FAILURE:
+    case actionTypes.GET_RESTAURANT_ORDERS_FAILURE:
     case actionTypes.UPDATE_ORDER_STATUS_FAILURE:
       return {
         ...state,
